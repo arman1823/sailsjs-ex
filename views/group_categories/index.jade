@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+
+    .container(data-reorder-url="#{getUrl('category-reorder')}")
+
+        .input-group.create-category-group(rel='#{getUrl("category-create")}')
+            input#new_category_name.form-control(type="text", placeholder="Create a category")
+            .input-group-btn
+                button#create_group_category.btn.mybtn GO
+
+
+        table#user_groups.table.table-hover.users-table.dragble-table
+            thead
+                tr
+                    th #{__('group-mame')}
+                    th #{__('admin-username')}
+                    th #{__('date-timecreated')}
+            tbody.sortable1.connectedSortable.table.table-hover
+                each group in userGroups
+                    tr(data-group-id=(group.groupId))
+                        td #{group.name}
+                        td #{group.adminUsername}
+                        td #{group.createdAt}
+            tfoot
+                tr
+                    th #{__('group-mame')}
+                    th #{__('admin-username')}
+                    th #{__('date-timecreated')}
+
+        table#group_categories.table.table-hover.cat-table.dragble-table
+            thead
+                tr
+                    th categories
+                    th groups
+            tbody
+                each category in userCategories
+                    tr(data-cat-id=(category.catId))
+                        td #{category.name}
+                        td
+                            table.table.table-hover
+                                tbody.sortable2.connectedSortable
+                                    each group in category.groups
+                                        tr(data-group-id=(group.groupId))
+                                            td #{group.name}
+                                            td #{group.adminUsername}
+                                            td #{group.createdAt}
+            tfoot
+                tr
+                    th categories
+                    th groups
+
+        table#group_category_prototype.prorotype.hide
+            tr(style="display: none")
+                td
+                td
+                    table.table.table-hover
+                        tbody.sortable2.connectedSortable

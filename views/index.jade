@@ -1,0 +1,13 @@
+if user
+    block vars
+        - var bodyClasses = "page-home";
+
+extends layout
+
+block content
+    .container
+        if user
+            include home
+        else
+            include partial/login
+

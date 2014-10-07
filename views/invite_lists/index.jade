@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+    .container
+        .invite_lists
+            h2 Invite Lists
+            table#invite-list.table.table-hover
+                thead
+                    tr
+                        th #{__('invite-list-name')}
+                        th #{__('usernames-names')}
+                        th #{__('date-created-last-mod')}
+                        th #{__('change')}
+                tbody
+                    - var users;
+                    each list in lists
+                        - users = list.users.map(function(elem) { return elem.user.username; });
+                        tr(data-list-id=(list.id))
+                            td #{list.name}
+                            td #{users.join(", ")}
+                            td #{list.createdAt}
+                            td
+                                button.invite_list_delete.mybtn.btn(data-delete-url=(getUrl("remove-invite-list"))) delete
+                                button.invite_list_edit.mybtn.btn.ml15(data-edit-url=(getUrl("edit-invite-list"))) edit
+                tfoot
+                    tr
+                        th #{__('invite-list-name')}
+                        th #{__('usernames-names')}
+                        th #{__('date-created-last-mod')}
+                        th #{__('change')}
+            h3#invite_list_create_title.mb15
+                span.create #{__("invite_list_create_title")}
+                span.edit.hide #{__("invite_list_edit_title")}
+            form#invite_list_create_form(method="post", action=(getUrl("create-invite-list")), data-socket="true", data-socket-after="inviteListAfterAdd")
+                .form-group
+                    input.form-control(type='text', name="name", placeholder='Name of List')
+                .form-group
+                    input.form-control(type='text', name="users", placeholder='Enter usernames separated by a comma or space')
+                .form-group
+                    input(type="hidden", name="edit_remove", value="")
+                    button(type="submit").mybtn.btn Go
+                #invite_list_create_errors
+            hr.sep
+            h3.mb15 Search users
+            - var qLabel = __("latest_invitations_label");
+            - var inviteeLabel = __("invitees_search_label");
+            include ../partial/invite-users-autocomplete
+            include ../partial/invite-users-search

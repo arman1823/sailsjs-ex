@@ -1,0 +1,77 @@
+.window-style-1 {
+  .jquery-window {
+    overflow: visible;
+    .cf;
+    .border-radius(0);
+    .grad-1(@white, @gray, 20%);
+    .box-shad(0 0 3px 1px rgba(37, 65, 91, 0.3));
+    border: 1px solid @white;
+    min-height: 325px;
+  }
+  .content-inner{
+    height: 98px;
+    min-height: 102px;
+  }
+  .col-sm-10{
+    width: 100% !important;
+    label{
+      color: #333333;
+    }
+  }
+  .form-group{
+    overflow: hidden;
+  }
+  .window-title-bar {
+    background-color: #FBB03B;
+    height: 33px;
+    padding-top: 4px;
+    .cf;
+    .border-radius(0 0 0 0);
+    .window-title {
+      .txt-shad();
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+    .action-button {
+      background-image: url("/images/sprite-1.png");
+      &.button-minimize {
+        background-position: -44px 0;
+      }
+      &.button-maximize {
+        background-position: -66px 0;
+      }
+      &.button-unminimize {
+        background-position: -22px 0;
+      }
+    }
+  }
+  .message-file{
+    .glyphicon{
+      color: @middle-gray;
+      &:hover{
+        color: @orange;
+      }
+    }
+  }
+  .form-group{
+    label{
+      color: #3c3c3c;
+      font-size: 11px;
+      font-family: verdana;
+      font-weight: normal;
+    }
+    textarea{
+      width:100%;
+    }
+    .col-sm-10{
+      padding: 0 !important;
+    }
+  }
+
+}
+
+
+.nicescroll-rails div{
+  background-color: @orange !important;
+}

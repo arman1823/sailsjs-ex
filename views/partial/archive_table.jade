@@ -1,0 +1,21 @@
+each archive in archives
+    - var admins = [];
+    - var users = [];
+    each user in archive.users
+        if ( user.role == "admin" )
+            - admins.push(user)
+        else
+            - users.push(user)
+    tr
+        td
+            a(href="/archives/#{archive.groupId}") #{archive.name}
+        td #{admins.length ? admins[0].username : "- no admins -"}
+            - var adminUsernameStack = [];
+            if ( admins.length )
+                each admin, i in admins
+                    if ( i != 0 && admin )
+                        - adminUsernameStack.push(admin.username)
+                if ( admins.length > 1 )
+                    span.trangle-btn(class="ml15 trangle-btn-holder", data-toggle="tooltip", data-placement="bottom", data-html="true", title=(adminUsernameStack.join('<br />')))
+        td #{archive.users.length}
+        td #{archive.end_date}

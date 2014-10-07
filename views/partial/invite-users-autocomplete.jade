@@ -1,0 +1,10 @@
+.form-group
+    input.form-control.autocomplete(type="text", name="last_invitation", placeholder="#{inviteeLabel || __('send_invitation')}" data-autocomplete-url="#{getUrl('autocomplete.invitations')}")
+.form-group
+    .invitation-boxes
+
+.invitation-box.prototype.hide
+    span unnamed
+    a.remove(href="#")
+    input(type="hidden", name="invite_ids[]", value="0")
+a.btn.mybtn.invite-action-link.prototype.hide(href="#") invite

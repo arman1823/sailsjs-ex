@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+	.container
+		.messages
+			if messages.length
+				table.table.table-striped.table-bordered.table-condensed
+					each el in messages
+						include ../partial/message_content_all
+			else
+				h1 No messages
+		
+		.create-dialog
+			- var query = "?to=User&&inbox=true", fields = true;
+			include ../partial/message_send

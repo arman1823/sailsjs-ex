@@ -1,0 +1,9 @@
+extends ../layout
+block content
+	#resend-activation-email-message
+	form.block(id="forgot-password", method="post", action="#{getUrl('users.resend-activation-email')}", data-socket="true", rel="#resend-activation-email-message")
+		.form-group
+			label #{__("username")}
+			input.form-control(name='username', placeholder="#{__('username')}", autocomplete="off")
+		.form-group
+			button.btn.btn-primary.pull-right(type="submit", tabindex="5") #{__('send_email')}

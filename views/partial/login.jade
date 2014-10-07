@@ -1,0 +1,24 @@
+.col-xs-12.col-sm-9
+    .home_center_box
+        .home_logo
+            img(src='/images/home_logo.png', alt='Smiley face')
+        h4 CREATING SYNERGY
+    a.btn.mybtn(href='#',tabindex="5", role='button') TAKE A TOUR
+.login.col-xs-12.col-sm-3
+    #login-message
+    #login-form
+        form.navbar-right.block(role='login', action='#{getUrl("users.login")}', method='post', data-socket="true", rel="#login-message", redirect='#{redirect}')
+            .form-group
+                input.form-control(name='username', type='text',placeholder='Username')
+                a(data-toggle="modal", data-target="#forgot-user") Forgot Username?
+            .form-group
+                input.form-control(name='password', type='password',placeholder='Password')
+                a(data-toggle="modal", data-target="#forgot-pass") Forgot Password?
+            .form-group
+                button.btn.pull-right.mybtn(type='submit', tabindex="5") #{__('sign_in')}
+    #sign_up
+        p Don't have an account?
+        div.right.clear
+            a.btn.pull-right.mybtn(href='/sign-up',tabindex="5", role='button') #{__('sign_up')}
+    include ../users/forgot_password
+    include ../users/forgot_username

@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    .container.archives-single
+        table.view-det-table
+            tr
+                th.vdt-title #{__('group-mame')}
+                th 1
+            tr
+                th.vdt-title #{__('admin-username')}
+                th 1
+            tr
+                th.vdt-title #{__('date-timecreated')}
+                th 1
+            tr
+                th.vdt-title #{__('no-members')}
+                th 1
+        table.table.table-striped.table-bordered.table-condensed
+            each el in groupObj.messages
+                include ../partial/message_content

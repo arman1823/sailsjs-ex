@@ -1,0 +1,32 @@
+.navbar.navbar-fixed-top(role='navigation')
+    .container
+        .navbar-header
+            a.navbar-brand.menu-logo(href='/')
+                img(src='/images/logo.png')
+        .navbar-collapse.collapse
+            ul.nav.navbar-nav
+                li
+                    a(href='/') Create~Join
+                li
+                    a(href='/groups') My Groups
+                li
+                    a(href='/messages') Messages
+                li
+                    a(href='/archives') Archives
+                li
+                    a(href='/invite-lists') Invite Lists
+                li
+                    a(href='/organize') Organize
+                li
+                    a(href='/account') Account
+            ul.nav.navbar-nav.navbar-right
+                li.custom-popover.notification.popover-dismiss(rel="ul.notification-list", data-placement="bottom",  data-original-title="notifications")
+                    span.glyphicon.glyphicon-exclamation-sign
+                    ul.notification-list(style="display: none;")
+                li
+                    a(href='/faq') FAQ
+                li
+                    a(href='/feedback') Feedback
+                li
+                    a(href='/users/logout') Exit
+

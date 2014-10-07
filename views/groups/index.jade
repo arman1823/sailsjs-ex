@@ -1,0 +1,66 @@
+extends ../layout
+
+- var page = "groups";
+- var group;
+
+mixin groupListOutput(obj)
+    each groupObj, groupId in obj
+        - group = groupObj.group;
+        li(class="group-win-trigger"): a(href="#", data-group-name="#{group.groupName}", data-group-id="#{group.groupId}") #{group.groupName}
+
+block content
+    .container
+        .groups.user-groups
+            .group-windows-wrap.jquery-tabs
+                ul.etabs
+                    li.tab: a(href="#group_windows") Groups
+                    li.tab.private-message-tab: a(href="#private_messages") Private Chat
+                        span 0
+                #group_windows.group-windows.window-style-1.tab-container
+                #private_messages.group-windows1.window-style-2.tab-container
+                    #private_chat
+                        - var groupObj = myPrivateChat;
+                        - group = groupObj.chat;
+                        .content-inner
+                            include ../modules/messages
+                        .send
+                            - var query = "?to=Chat"; var to = group.id;
+                            include ../partial/message_send
+                    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                        .modal-dialog
+                            .modal-content
+                                .modal-header
+                                    button.close(type='button', data-dismiss='modal')
+                                        span(aria-hidden='true') ×
+                                        span.sr-only Close
+                                    h4#myModalLabel.modal-title Modal title
+                                .modal-body
+                                    | ...
+                                .modal-footer
+                                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                    button.btn.btn-primary(type='button') Save changes
+            .group-taskbar
+                #groups-list
+                    a(href="#") #{__('List of groups')}
+                    div.hide
+                        ul#menu-sidebar
+                            +groupListOutput(groupsByCategories.uncategorized)
+                            each category, categoryName in groupsByCategories.categorized
+                                li.category
+                                    a(href="#") #{categoryName}
+                                    ul.none.sub-menu
+                                        +groupListOutput(category)
+
+        #group-tables.hide
+            each groupObj, groupId in userGroups
+                - group = groupObj.group;
+                div(rel="group-table-#{groupId}")
+                    .messages
+                        include ../modules/users-dropdown
+                        .content-inner
+                            include ../modules/messages
+                        .send
+                            - var query = "?to=Group"; var to = groupId;
+                            - var room = [groupId, '', "group"];
+                            include ../partial/message_send
+    include ../modules/invite-users-group

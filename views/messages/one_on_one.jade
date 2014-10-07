@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    .container
+        .messages
+            if messages.length
+                - var fromUserData;
+                each el in messages
+                    if el.from_user_id != req.session.user
+                        - fromUserData = el; break
+                br
+                table.table
+                    tr
+                        td #{ fromUserData.username }
+                        td
+                            img(src=(fromUserData.picture == "default_avatar.jpg" ? "/images/default/" + fromUserData.picture : "/uploads/avatars/" + fromUserData.picture), width="32", height="32")
+                #inbox
+                    table.table.table-striped.table-bordered.table-condensed.message-content
+                        each el in messages
+                            include ../partial/message_content
+                .send
+                    - var query = "?to=User"; var to = fromUserData.from_user_id;
+                    - var room = [fromUserData.from_user_id, fromUserData.to_user_id, 'chat'];
+                    include ../partial/message_send
+            else
+                h1 No messages

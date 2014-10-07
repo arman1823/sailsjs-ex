@@ -1,0 +1,50 @@
+.sortable1, .sortable2 {
+  border: 1px solid #eee;
+  min-height: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 0 0 0;
+  float: left;
+  margin-right: 10px;
+  width: 100%;
+}
+.sortable1 li, .sortable2 li {
+  margin: 0 5px 5px 5px;
+  padding: 5px;
+  font-size: 1.2em;
+  width: 100%;
+}
+
+.users-table{
+width: 48%;
+  float: right;
+
+}
+.cat-table{
+  width: 48%;
+  float: left;
+  table{
+    margin-bottom: 0;
+    tbody{
+      padding-top: 0;
+     float: left!important;
+      tr{
+        display: block;
+        float: left;
+        td{
+          display: none;
+          &:first-child{
+            display: block !important;
+            border: 1px solid #fbb03b;
+            margin-right: -1px;
+          }
+        }
+      }
+    }
+  }
+}
+.dragble-table{
+  .sortable1{
+    float: none !important;
+  }
+}

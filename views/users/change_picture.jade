@@ -1,0 +1,8 @@
+extends ../layout
+block content
+	.container
+		img(src=(userData.picture == "default_avatar.jpg" ? "/images/default/" + userData.picture : "/uploads/avatars/" + userData.picture), width='300', height='200')
+		#change-picture-message
+		form.block(id="change-picture", method="post", action="#{getUrl('change-picture')}",  enctype="multipart/form-data")
+			input(type="file", name="avatar")
+			button.btn.btn-primary.pull-right(type="submit", tabindex="5") #{__('go!')}

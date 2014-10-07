@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+    .container.archives-holder
+        .cf.mb15.hide
+            span.note #{__('archive-firts-info')}
+            a.mybtn.btn.ml15 #{__('pay')}
+        .cf.mb15
+            form.block(id="archive-search", method="post", action="#{getUrl('search.archives')}", rel="#archive-search-results")
+                .input-group
+                    input.form-control(type="text", placeholder="#{__('search-archive-placeholder')}")
+                    .input-group-btn
+                        button.btn.mybtn Go
+        .cf.mb15.hide
+            a.btn.mybtn #{__('list-most-active-arch-pub-group')}
+        .cf.mb15.search-result
+            table#archive-search-results.table.table-hover
+                thead
+                    tr
+                        th #{__('group-mame')}
+                        th #{__('admin-username')}
+                        th #{__('no-members')}
+                        th #{__('date-timecreated')}
+                tbody
+                    include ../partial/archive_table
+                tfoot
+                    tr
+                        th #{__('group-mame')}
+                        th #{__('admin-username')}
+                        th #{__('no-members')}
+                        th #{__('date-timecreated')}
+
+        

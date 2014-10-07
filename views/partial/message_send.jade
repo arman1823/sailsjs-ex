@@ -1,0 +1,33 @@
+#messages-send
+form.block(method='post', rel="#messages-send", enctype="multipart/form-data", action="#{getUrl('send-message')}#{query}", data-inbox="#inbox", data-socket="true")
+    .form-group.window-icons
+        if fields
+            .col-sm-3
+                label #{__('username')}
+                    input.create-dialog-username.form-control(name='username', type='text')
+                label #{__('city')}
+                    input.create-dialog-city.form-control(name='sity', type='text')
+                label #{__('group')}
+                    input.create-dialog-city.form-control(name='group', type='text')
+                
+        .col-sm-10
+            label #{__('message')}
+            textarea.message-box.form-control(name='message')
+    .message-file
+        .image-message(name='image')
+            .glyphicon.glyphicon-picture
+        .audio-message(name='audio')
+            .glyphicon.glyphicon-music
+        .video-message(name='video')
+            .glyphicon.glyphicon-facetime-video
+        .binary-message(name='binary')
+            .glyphicon.glyphicon-file
+        input(type="hidden", name="to", value="#{to}")
+        input.roomData0(type="hidden", name="roomData0", value="#{room ? room[0] : ''}")
+        input.roomData1(type="hidden", name="roomData1", value="#{room ? room[1] : ''}")
+        input.room(type="hidden", name="room", value="#{room ? room[2] : ''}")
+    .hiddenfile
+        input.messages-file-container(name='file', type='file')
+
+    button.btn.pull-right.mybtn.message-send(type='submit', tabindex="5") #{__('go')}
+    script init_message_system("#{room}");

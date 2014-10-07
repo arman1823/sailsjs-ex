@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    .container
+        .create-group
+            .c-group
+                form.block(id="create-group", method="post", action="#{getUrl('create-group')}", data-socket="true", data-socket-after="afterGroupCreate")
+                    h2 Create a group
+                    #switch-public-private.btn-group(data-toggle='buttons')
+                        label.btn.mybtn.active
+                            input#option1.form-switcher(type='radio', name='is_public', value='1')
+                            | #{__("public")}
+                        label.btn.mybtn
+                            input#option2.form-switcher(type='radio', name='is_public', value='0')
+                            | #{__("private")}
+                    .form-group
+                        input.form-control(type="text", name="name", placeholder="#{__('group_name')}")
+                    .form-group.form-group-private
+                        input.form-control(type="text", name="password", placeholder="#{__('group_password')}")
+                    include ../partial/invite-users-autocomplete
+                    button.btn.mybtn.pull-right(type="submit", tabindex="5") #{__('go')}
+            include ../partial/invite-users-search

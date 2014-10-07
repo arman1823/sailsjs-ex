@@ -1,0 +1,48 @@
+doctype html
+head
+    title= title || "Event Consort"
+    meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+    //script(src="/js/sails.io.js")
+    // SCRIPTS
+    script(type="text/javascript", src="/bower_components/jquery/dist/jquery.js")
+    script(type="text/javascript", src="/linker/js/socket.io.js")
+    script(type="text/javascript", src="/linker/js/sails.io.js")
+    script(type="text/javascript", src="/linker/js/app.js")
+    script(type="text/javascript", src="/bower_components/lodash/dist/lodash.js")
+    script(type="text/javascript", src="/bower_components/jplayer/jquery.jplayer/jquery.jplayer.js")
+    script(type="text/javascript", src="/bower_components/fancybox/source/jquery.fancybox.js")
+    script(type="text/javascript", src="/bower_components/jquery-form/jquery.form.js")
+    script(type="text/javascript", src="/bower_components/jquery-nicescroll/jquery.nicescroll.js")
+    script(type="text/javascript", src="/bower_components/easytabs/lib/jquery.easytabs.js")
+    script(type="text/javascript", src="/bower_components/jquery-ui/jquery-ui.js")
+    script(type="text/javascript", src="/bower_components/bootstrap/dist/js/bootstrap.js")
+    script(type="text/javascript", src="/bower_components/bootbox/bootbox.js")
+    script(type="text/javascript", src="/linker/js/helpers.js")
+    script(type="text/javascript", src="/linker/js/jquery.autocomplete.js")
+    script(type="text/javascript", src="/linker/js/jquery.windows.js")
+    script(type="text/javascript", src="/linker/js/main.js")
+    // SCRIPTS END
+    // STYLES
+    link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
+    link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap-theme.css")
+    link(rel="stylesheet", href="/bower_components/jplayer/skin/blue.monday/jplayer.blue.monday.css")
+    link(rel="stylesheet", href="/bower_components/fancybox/source/jquery.fancybox.css")
+    link(rel="stylesheet", href="/linker/styles/font.css")
+    link(rel="stylesheet", href="/linker/styles/jquery.windows.css")
+    link(rel="stylesheet", href="/linker/styles/main.css")
+    link(rel="stylesheet", href="/linker/styles/style.css")
+    link(rel="stylesheet", href="/linker/styles/user.css")
+    // STYLES END
+
+block vars
+    - var bodyClasses = "page-default";
+
+body(class=bodyClasses)
+    include header
+    #content
+        block content
+    #footer
+        block footer
+    #element_prototypes
+        .preloader-wrap.prototype.rel
+            .preloader

@@ -1,0 +1,17 @@
+#forgot-user.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+        form.modal-content(id="forgot-password", method="post", action="#{getUrl('forgot-username')}", data-socket="true", rel="#forgot-username-message", redirect="/forgot-username-sent")
+            .modal-header
+                button.close(type='button', data-dismiss='modal')
+                    span(aria-hidden='true') ×
+                    span.sr-only Close
+                h4.modal-title Forgot Username
+            .modal-body
+                .forgot-username
+                    #forgot-username-message
+                    #forgot-username-form.cf
+                            .form-group
+                                input.form-control(name='email',placeholder='#{__("enter_your_email_id")}',  autocomplete="off")
+
+            .modal-footer
+                button.btn.mybtn.pull-right(type="submit", tabindex="5") #{__('go!')}

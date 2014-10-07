@@ -1,0 +1,8 @@
+.home
+    p
+        - var invitationCount = parseInt(invitations.length);
+        a.btn.mybtn.create-btn.navbar-link(href=(getUrl('create-group'))) CREATE A GROUP
+        a(href=(getUrl('groups.join')), class='modal-box btn mybtn join-btn navbar-link #{invitationCount ? "active" : ""}')
+            span.text JOIN A GROUP
+            if ( invitationCount )
+                span.count !{invitationCount ? invitationCount : ""}

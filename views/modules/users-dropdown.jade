@@ -1,0 +1,23 @@
+.dropdown.user-admin(data-pchat-action=(getUrl("private-chat-add")))
+    button.btn.mybtn.invite-users(data-toggle="modal", data-target="#invite-users") invite users +
+    div.custom-popover(rel=("#" + "userslist_wrap_" + group.groupId), data-placement="bottom",  data-original-title="Users")
+        span users
+        div(id=("userslist_wrap_" + group.groupId), class="userslist-wrap userslist-wrap-#{group.groupId}", style="display: none;")
+            ul.userslist
+                each user in groupObj.users
+                    li
+                        span.user #{user.username}
+                        span.actions-holder(data-user-id=(user.userId))
+                            span.glyphicon.glyphicon-user(data-toggle="tooltip", data-placement="top", title="Promote to admin")
+                            span(class='glyphicon glyphicon-list #{user.privateChatId == myPrivateChat.chat.id ? "active" : ""}', data-toggle="tooltip", data-placement="top", title="Add to private chat")
+    div.sep |
+    div.custom-popover(rel=("#" + "adminlist_wrap_" + group.groupId), data-placement="bottom",  data-original-title="Admins")
+        span admins
+        div(id=("adminlist_wrap_" + group.groupId), class="adminlist-wrap adminlist-wrap-#{group.groupId}", style="display: none;")
+            ul.adminlist
+                each admin in groupObj.admins
+                    li
+                        span.user #{admin.username}
+                        span.actions-holder(data-user-id=(admin.userId))
+                            span.glyphicon.glyphicon-user.active(data-toggle="tooltip", data-placement="top", title="Demote to usual user")
+                            span(class='glyphicon glyphicon-list #{admin.privateChatId == myPrivateChat.chat.id ? "active" : ""}', data-toggle="tooltip", data-placement="top", title="Add to private chat")

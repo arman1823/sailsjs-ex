@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+    .container
+        .register
+            #register-message
+            #register.row
+            form.block(action='#{getUrl("sign-up")}', method='post', data-socket="true", rel="#register-message", redirect='#{getUrl("wellcome")}')
+                .form-group
+                    label.col-sm-2.control-label(for='textinput') Name
+                    .col-sm-10
+                        input.form-control(name='userData[full_name]', type='text')
+                .form-group
+                    label.col-sm-2.control-label(for='textinput') Username
+                    .col-sm-10
+                        input.form-control(name='user[username]', type='text')
+                .form-group
+                    label.col-sm-2.control-label(for='password') Password
+                    .col-sm-10
+                        input.form-control(name='user[password]', type='password')
+                .form-group
+                    label.col-sm-2.control-label(for='password') Confirm Password
+                    .col-sm-10
+                        input.form-control(name='user[passwordConfirm]', type='password')
+                .form-group
+                    label.col-sm-2.control-label(for='email') Email
+                    .col-sm-10
+                        input.form-control(name='userData[email]', type='text')
+                .form-group
+                    label.col-sm-2
+                    .col-sm-10
+                        .checkbox
+                            input(name='agree', type='checkbox', checked='checked')
+                            | #{__("i_agree_to")}
+                            a(href="#{getUrl('terms-and-conditions')}" ) #{__("terms_and_conditions")}
+                .form-group
+                    .col-sm-2
+                    .col-sm-10
+                        button.btn.pull-right.mybtn(type='submit', tabindex="5") #{__('go')}

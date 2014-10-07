@@ -1,0 +1,403 @@
+.mybtn {
+  .txt-shad();
+  font-family: verdana, arial;
+}
+
+.etabs {
+  margin: 0;
+  padding: 0;
+}
+
+.tab {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  border: solid 1px #fbb03b;
+  -moz-border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  margin-right: -1px;
+  min-width: 86px;
+  text-align: center;
+}
+
+.tab a {
+  font-size: 14px;
+  line-height: 34px;
+  display: block;
+  padding: 0 10px;
+  outline: none;
+  color: #FBB03B;
+  font-family: verdana;
+  text-transform: uppercase;
+}
+
+.tab a:hover, .tab a {
+  text-decoration: none;
+}
+
+.tab.active {
+  background: none repeat scroll 0 0 #FBB03B;
+  position: relative;
+  border-color: #fbb03b;
+  &:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    .trangle-left(#fbb03b, 10px, 6px);
+    bottom: -14px;
+    left: 50%;
+    transform: rotate(-90deg);
+    border-width: 10px 6px 10px 0;
+    margin-left: -3px;
+  }
+}
+
+.tab a.active {
+  color: white;
+}
+
+.tab-container {
+  margin-top: 20px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.trangle-btn {
+  top: 4px;
+  position: relative;
+  .trangle-left(@orange, 8px, 6px);
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+
+.table tbody tr th {
+  font-weight: normal;
+}
+
+.view-det-table {
+  th {
+    font-weight: normal;
+    padding: 2px;
+  }
+  .vdt-title {
+    padding-right: 50px;
+    color: darkgray;
+    font-weight: bold;
+  }
+}
+
+.user-admin {
+  margin-right: 0;
+  .sep {
+    color: darkgray;
+    margin: 0 5px;
+  }
+  > .custom-popover, > .sep {
+    float: right;
+    > span {
+      color: #808080;
+      cursor: pointer;
+      &:hover {
+        color: @orange;
+      }
+    }
+  }
+  li {
+    min-width: 200px;
+    list-style-type: none;
+    .cf;
+    .actions-holder {
+      float: right;
+      .glyphicon {
+        margin-left: 6px;
+        color: lightgrey;
+        &:hover, &.active {
+          color: @orange;
+        }
+      }
+    }
+    .user {
+      display: inline-block;
+      max-width: 154px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+}
+
+.navbar-nav {
+  .notification {
+    margin-top: 15px;
+    .glyphicon {
+      color: @orange;
+      cursor: pointer;
+      font-size: 17px;
+      &.active {
+        color: red;
+      }
+    }
+  }
+  .popover-content {
+    li {
+      border-bottom: 1px solid #f5f5f5;
+      margin-bottom: 5px;
+      min-width: 150px;
+      padding-bottom: 5px;
+      font-size: 13px;
+    }
+  }
+}
+
+.popover-title {
+  color: #808080;
+}
+
+.invite_lists {
+  .form-group {
+    width: 60%;
+  }
+  hr.sep {
+    border: 1px solid @gray;
+  }
+}
+
+#forgot-user {
+  .form-group {
+    margin-bottom: 0;
+  }
+
+}
+
+#forgot-password {
+  .modal-footer {
+    margin-top: 0;
+  }
+}
+
+.feedback_bot {
+  width: 100%;
+  position: relative;
+  .left {
+    float: left;
+    width: 100%;
+    clear: none;
+    .form-group{
+      margin-bottom: 5px;
+      label{
+        min-width: 115px;
+        float: left;
+      }
+    }
+  }
+  .right {
+    position: absolute;
+    right: 0;
+    float: right;
+    clear: none;
+    bottom: 0;
+    .form-group{
+      margin-bottom: 0;
+    }
+  }
+}
+
+.faq {
+  .event-cons {
+    background-image: url("/images/eventconsort.png");
+    display: inline-block;
+    height: 13px;
+    margin: 0 5px;
+    position: relative;
+    top: 2px;
+    width: 130px;
+  }
+  ul{
+    margin-bottom: 40px;
+    li {
+      p {
+        position: relative;
+        font-size: 15px;
+        margin-bottom: 17px;
+        > span {
+          position: absolute;
+          left: -42px;
+        }
+      }
+    }
+  }
+
+}
+
+.group-taskbar {
+  position: fixed !important;
+  bottom: -1px;
+  right: 120px;
+  #groups-list {
+    > a {
+      background-image: url("/images/group-icon.png");
+      background-position: 5px 3px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      padding: 7px 5px 6px 47px;
+      font-family: arial;
+      font-weight: normal;
+      border-bottom: 1px solid #d9d9d9;
+      font-size: 12px;
+    }
+  }
+  ul {
+    padding-left: 0 !important;
+    li {
+      border-bottom: 1px solid #d9d9d9;
+      a {
+        font-size: 14px;
+        color: #333;
+        display: block;
+        font-family: arial;
+        padding: 5px 0 5px 13px;
+
+        &:hover, &:active, &:focus {
+          text-decoration: none;
+          background-color: #f3f3f3;
+        }
+        &.expanded {
+          border-bottom: 1px solid #d9d9d9;
+        }
+      }
+      .sub-menu {
+        border-top: 1px solid #d9d9d9;
+        display: none;
+        margin-bottom: -1px;
+        margin-left: 0px;
+        margin-top: -1px;
+        li {
+          list-style-type: none;
+          border-bottom: 1px dashed transparent;
+          a {
+            background-color: #fafafa;
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+//html, body, #content, .container{
+//  height:100%;
+//}
+tbody.sortable1:after {
+  content: " ";
+  display: table;
+  width: 100%;
+  height: 20px;
+}
+
+.window-icons {
+  margin-bottom: -11px;
+}
+
+.window-content {
+  button.invite-users {
+    padding: 3px 10px;
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+}
+
+#private_messages {
+  #private_chat {
+    .content-inner {
+      padding-bottom: 137px;
+      .cf();
+    }
+    .send {
+      .transition;
+      position: fixed;
+      height: 145px;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      border-top: 1px solid lightgray;
+      opacity: 0.57;
+      form.block {
+        background-color: #F9F9F9;
+        .cf();
+        .col-sm-10 {
+          width: 100% !important;
+          margin-bottom: 8px;
+          textarea {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+          }
+        }
+        .message-file {
+          margin-left: 10px;
+        }
+        .mybtn.message-send {
+          margin-right: 10px;
+
+          .form-group {
+            .cf;
+            margin-bottom: 0;
+          }
+        }
+      }
+      &:hover, &:focus {
+        opacity: 1;
+        .transition;
+      }
+
+    }
+  }
+  td {
+    &:hover .like-box {
+      height: 20px;
+      .transition;
+    }
+    .like-box {
+      .transition;
+      height: 0;
+      overflow: hidden;
+    }
+  }
+}
+
+.like-box {
+
+  a {
+    width: 20px;
+    .transition;
+    display: inline-block;
+    overflow: hidden;
+    color: lightgray;
+    &:hover {
+      .transition;
+      i {
+        color: @orange;
+      }
+    }
+    i {
+      color: lightgray;
+    }
+  }
+}
+
+#feedback_response {
+  &.failure {
+    color: red;
+  }
+}

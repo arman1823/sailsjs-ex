@@ -1,0 +1,7 @@
+#header
+    .container
+            if req.session.user
+                include nav/menu
+                include breadcrumb
+            else
+                include nav/faqmenu

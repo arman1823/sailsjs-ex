@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    .container
+        form.feedback(method="post", action=(UrlLib("feedback-submit")), data-socket="true", rel="#feedback_response")
+            p #{__("feedback_intro_text")}
+            .form-group
+                textarea(name="message", placeholder="Enter Your Feedback").form-control
+            .cf.feedback_bot
+                .left
+                    .form-group
+                        label Username:
+                        div #{username}
+                    .form-group
+                        label Email:
+                        div #{email}
+                .right
+                    .form-group
+                        button(type="submit").btn.mybtn Go!
+            #feedback_response

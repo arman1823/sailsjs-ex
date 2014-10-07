@@ -1,0 +1,7 @@
+each group in groups
+    tr
+        td #{group.name}
+        td #{group.name}
+        td #{group.cratedAt}
+        td: a.join-action-link.btn.mybtn(href="#", data-group-id=(group.id)) join
+

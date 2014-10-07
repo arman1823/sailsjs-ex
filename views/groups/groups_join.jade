@@ -1,0 +1,66 @@
+extends ../layout
+
+block content
+    .container
+        #group_join_page.create-group
+            .c-group
+                fieldset
+                    legend #{__("public_group_join_title")}
+                    table.table.table-hover
+                        thead
+                            tr
+                                th #{__('group-mame')}
+                                th #{__('thead_invited_by')}
+                                th #{__('thead_join_group')}
+                        tbody
+                            each invitation in invitations
+                                tr
+                                    td #{invitation.group_name}
+                                    td #{invitation.full_name}
+                                    td
+                                        .join-link-wrap
+                                            a.join-action-link.btn.mybtn(href="#", data-group-id=(invitation.from_group_id)) join
+                        tfoot
+                            tr
+                                th #{__('group-mame')}
+                                th #{__('thead_invited_by')}
+                                th #{__('thead_join_group')}
+                form(role="form", action='#{getUrl("groups.join")}', method='post', data-socket="true", rel="#private-group-join-response")
+                    fieldset
+                        legend #{__("private_group_join_title")}
+                        .control-group
+                            .form-group
+                                label.control-label(for="group_na,e") Group name:
+                                input.form-control(type="text", id="group_name", name="group_name", value="")
+                            .form-group
+                                label.control-label(for="group_pwd") Password:
+                                input.form-control(type="password", id="group_pwd", name="group_pwd", value="")
+                            .form-group
+                                input(type="hidden", name="group_type", value="private")
+                                input.form-control(type="submit", value="GO")
+
+                form.block(id="archive-search", method="post", action="#{getUrl('search.groups')}", rel="#groups-search-results")
+                    .input-group
+                        input.form-control(type="text", placeholder="#{__('search-archive-placeholder')}")
+                        .input-group-btn
+                            button.btn.mybtn Go
+                .cf.mb15.search-result
+                table#groups-search-results.table.table-hover
+                    thead
+                        tr
+                            th #{__('group-mame')}
+                            th #{__('admin-username')}
+                            th #{__('no-members')}
+                            th #{__('date-timecreated')}
+                    tbody
+                    tfoot
+                        tr
+                            th #{__('group-mame')}
+                            th #{__('admin-username')}
+                            th #{__('no-members')}
+                            th #{__('date-timecreated')}
+
+
+
+                #private-group-join-response
+                a.groups-link.btn.mybtn(href="#") #{__("groups_link_label")}

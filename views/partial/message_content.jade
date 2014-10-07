@@ -1,0 +1,89 @@
+- var thisIsMe = (el.from_user_id == req.session.user);
+
+tr
+    td
+        .sender #{ el.full_name }
+        case el.message_type
+            when 'text'
+                .text-message #{el.message_body}
+            when 'image'
+                .image-message
+                    img(src="/uploads/content_images/#{el.message_body}", width='64')
+                    a(href="/uploads/content_images/#{el.message_body}", target="_blank")
+                        .download-icon
+            when 'audio'
+                .audio-message
+                    .audio-message-player(data="/uploads/content_audios/#{el.message_body}")
+                    div(id=("jp_container_" + uuid()))
+                        .jp-interface
+                            ul.jp-controls
+                                li
+                                    a.jp-play(href='#', tabindex='1') play
+                                li
+                                    a.jp-pause(href='#', tabindex='1') pause
+                                li
+                                    a.jp-stop(href='#', tabindex='1') stop
+                        .jp-progress
+                            div.jp-seek-bar
+                                div.jp-play-bar
+                            //- div.jp-volume-bar
+                            //- 	div.jp-volume-bar-value
+                            div.jp-current-time
+                            div.jp-duration
+                    a(href="/uploads/content_audios/#{el.message_body}", target="_blank")
+                        .download-icon
+            when 'video'
+                .video-message
+                    .video-message-player(data="/uploads/content_videos/#{el.message_body}")
+                    div(id=("jp_container_" + uuid()))
+                        .jp-video-play
+                        .jp-interface
+                            ul.jp-controls
+                                li
+                                    a.jp-play(href='#', tabindex='1') play
+                                li
+                                    a.jp-pause(href='#', tabindex='1') pause
+                                li
+                                    a.jp-stop(href='#', tabindex='1') stop
+                            ul.jp-toggles
+                                li
+                                    a.jp-full-screen(href='#', tabindex='1') full screen
+
+                                    a.jp-restore-screen(href='#', tabindex='1') restore screen
+
+
+                        .jp-progress
+                            div.jp-seek-bar
+                                div.jp-play-bar
+                            //- div.jp-volume-bar
+                            //- 	div.jp-volume-bar-value
+                            div.jp-current-time
+                            div.jp-duration
+                    a(href="/uploads/content_videos/#{el.message_body}", target="_blank")
+                        .download-icon
+            default
+                .binary-message
+                    a(href="/uploads/content_binary/#{el.message_body}", target="_blank")
+                        .glyphicon.glyphicon-file
+                        .download-icon
+        if ! thisIsMe
+            .like-box
+                if ( ! el.myRateId )
+                    a.vote-link(href="/messages/rate/#{el.messageId}/good", title='| #{__("vote_up_text")}', rel="good")
+                        i.glyphicon.glyphicon-plus-sign
+
+                    a.vote-link(href="/messages/rate/#{el.messageId}/normal", title='|#{__("vote_neutral_text")}', rel="normal")
+                        i.glyphicon.glyphicon-ok-circle
+
+                    a.vote-link(href="/messages/rate/#{el.messageId}/bad", title='#{__("vote_down_text")}', rel="bad")
+                        i.glyphicon.glyphicon-minus-sign
+
+                .liked-response
+                    div(class="vote-response #{el.myRate == 'good' ? '' : 'hide'}", data-voted="good") #{__("voted_up_text")}
+                    div(class="vote-response #{el.myRate == 'bad' ? '' : 'hide'}", data-voted="bad") #{__("voted_down_text")}
+                    div(class="vote-response #{el.myRate == 'normal' ? '' : 'hide'}", data-voted="normal") #{__("voted_neutral_text")}
+            .spam-box
+                a.spam-btn(href="/vote/spam/#{el.messageId}")
+                .spammed-response
+                    .spam-response.spam-response-good.hide #{__("spam_report_ok")}
+    td #{DateService(el.createdAt).format("MMM Do YY")}

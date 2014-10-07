@@ -1,0 +1,8 @@
+extends ../layout
+block content
+	.container
+		div #{__("why_you_want_delete_account")}
+		#delete-account-message
+		form.block(id="change-picture", method="post", action="#{getUrl('delete-account')}", data-socket="true", rel="#delete-account-message", redirect="#{getUrl('users.logout')}")
+			textarea(name='message')
+			button.btn.btn-primary.pull-right(type="submit", tabindex="5") #{__('delete_account')}

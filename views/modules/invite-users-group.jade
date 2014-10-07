@@ -1,0 +1,15 @@
+#invite-users.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+        .modal-content(rel='#{getUrl("send-invitations")}')
+            .modal-header
+                button.close(type='button', data-dismiss='modal')
+                    span(aria-hidden='true') ×
+                    span.sr-only Close
+                h4#myModalLabel.modal-title Invite Users
+            .modal-body
+                include ../partial/invite-users-autocomplete
+                include ../partial/invite-users-search
+            .modal-footer
+                input(type="hidden", name="invite_group_id", value="")
+                button#do_group_invite.btn.mybtn(type='button') Invite Selected
+                #group_invite_result

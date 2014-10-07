@@ -1,0 +1,7 @@
+.public-search
+    form.block(id="public-user-search", method="post", action="#{getUrl('search.users')}", data-socket="true", data-response-type="table", rel="#public-search-results")
+        .input-group
+            input.form-control(type="text", name="q", placeholder="#{qLabel || __('search_for_invitees')}")
+            .input-group-btn
+                button.btn.mybtn(type="submit", tabindex="5") #{__('go')}
+    include ../modules/users-table

@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+    .container
+        .account
+            .col-xs-6.col-sm-3
+            .col-xs-6.col-sm-3.myright
+                .row
+                    p
+                        a.btn.mybtn(data-toggle="modal", data-target="#change-pass") #{__('change_password')}
+                .row
+                    p
+                        a.btn.mybtn(href="#{UrlLib('change-picture')}") #{__( 'change_picture' )}
+                .row
+                    p
+                        a.btn.mybtn(href="#{UrlLib('delete-picture')}") #{__( 'delete_picture' )}
+                .row
+                    p.space #{__('change_visibility_name_in_search')}
+
+                .row
+                    p.space #{__('change_visibility_username_in_search')}
+                .row
+                    p
+                        a.btn.btn-danger(type="button" href="#{UrlLib('delete-account')}") #{__( 'delete_account' )}
+            .col-xs-6.col-sm-3
+                .row
+                    img(src=(userData.picture == "default_avatar.jpg" ? "/images/default/" + userData.picture : "/uploads/avatars/" + userData.picture), width='300', height='200')
+                .row
+                    #name-visibility-message.ms
+                    form.block(id="forgot-password", method="post", action="#{getUrl('users.name-visibility')}", data-socket="true", rel="#name-visibility-message")
+                        .btn-group(data-toggle='buttons')
+                            label.btn.mybtn(class=(userData.public_full_name ? "active" : ""))
+                                input#option1.form-switcher.radio-submit(type='radio', name='visibility_name', value='true')
+                                | #{__("allowed")}
+                            label.btn.mybtn(class=(userData.public_full_name ? "" : "active"))
+                                input#option2.form-switcher.radio-submit(type='radio', name='visibility_name', value='false')
+                                | #{__("not_allowed")}
+
+
+
+                .row
+                    #username-visibility-message.ms
+                    form.block(id="forgot-password", method="post", action="#{getUrl('users.username-visibility')}", data-socket="true", rel="#username-visibility-message")
+                        .btn-group(data-toggle='buttons')
+                            label.btn.mybtn(class=(userData.public_user_name ? "active" : ""))
+                                input#option3.radio-submit(type='radio', name='visibility_username', value='true')
+                                | #{__("allowed")}
+                            label.btn.mybtn(class=(userData.public_user_name ? "" : "active"))
+                                input#option4.radio-submit(type='radio', name='visibility_username', value='false')
+                                | #{__("not_allowed")}
+
+            .col-xs-6.col-sm-3
+    include ../users/change_password

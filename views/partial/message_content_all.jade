@@ -1,0 +1,73 @@
+if el.from_user_id != req.session.user
+	tr
+		td
+			a(href="#{UrlLib('messages') + '/' + el.username}")
+				img(src=(el.picture == "default_avatar.jpg" ? "/images/default/" + el.picture : "/uploads/avatars/" + el.picture), width="32", height="32")
+		td
+			a(href="#{UrlLib('messages') + '/' + el.username}") #{el.username}
+		td
+			case el.message_type
+				when 'text'
+					.text-message #{el.message_body}
+				when 'image'
+					.image-message
+						img(src="/uploads/content_images/#{el.message_body}", width='64')
+						a(href="/uploads/content_images/#{el.message_body}", target="_blank")
+							.download-icon
+				when 'audio'
+					.audio-message
+						.audio-message-player(data="/uploads/content_audios/#{el.message_body}")
+						div(id=("jp_container_" + uuid()))
+							.jp-interface
+								ul.jp-controls
+									li
+										a.jp-play(href='#', tabindex='1') play
+									li
+										a.jp-pause(href='#', tabindex='1') pause
+									li
+										a.jp-stop(href='#', tabindex='1') stop
+							.jp-progress
+								div.jp-seek-bar
+									div.jp-play-bar
+								//- div.jp-volume-bar
+								//- 	div.jp-volume-bar-value
+								div.jp-current-time
+								div.jp-duration
+						a(href="/uploads/content_audios/#{el.message_body}", target="_blank")
+							.download-icon
+				when 'video'
+					.video-message
+						.video-message-player(data="/uploads/content_videos/#{el.message_body}")
+						div(id=("jp_container_" + uuid()))
+							.jp-video-play
+							.jp-interface
+								ul.jp-controls
+									li
+										a.jp-play(href='#', tabindex='1') play
+									li
+										a.jp-pause(href='#', tabindex='1') pause
+									li
+										a.jp-stop(href='#', tabindex='1') stop
+								ul.jp-toggles
+									li
+										a.jp-full-screen(href='#', tabindex='1') full screen
+									li
+										a.jp-restore-screen(href='#', tabindex='1') restore screen
+										
+
+							.jp-progress
+								div.jp-seek-bar
+									div.jp-play-bar
+								//- div.jp-volume-bar
+								//- 	div.jp-volume-bar-value
+								div.jp-current-time
+								div.jp-duration
+						a(href="/uploads/content_videos/#{el.message_body}", target="_blank")
+							.download-icon
+				default
+					.binary-message
+						a(href="/uploads/content_binary/#{el.message_body}", target="_blank")
+							.download-icon
+		td #{DateService(el.createdAt).format("MMM Do YY")}
+		td
+			button.btn.btn-warning.btn-mini Block
